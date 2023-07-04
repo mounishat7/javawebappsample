@@ -24,8 +24,8 @@ node {
       // login Azure
       withCredentials([usernamePassword(credentialsId: 'uDK8Q~VkzP3~eSQv~I0YJ085iLqf~u-KwXjcGaIf', passwordVariable: '20def07e-df93-4a4d-8d9e-f7752aa8adb1', usernameVariable: 'workshop-2')]) {
        sh '''
-         echo $AZURE_CLIENT_ID
-          az login --service-principal --username 'c1008d87-eee3-49ce-8d3d-15fa874db932' --password '20def07e-df93-4a4d-8d9e-f7752aa8adb1' --tenant '1b3c4a2d-e9a4-4bfb-8cdd-f11d94d07b77'
+          echo $AZURE_CLIENT_ID
+          az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
           az account set -s $AZURE_SUBSCRIPTION_ID
         '''
       }
